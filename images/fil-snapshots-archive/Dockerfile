@@ -1,4 +1,6 @@
-FROM ghcr.io/chainsafe/forest:latest-fat
+ARG FOREST_VERSION=latest-fat
+
+FROM ghcr.io/chainsafe/forest:${FOREST_VERSION}
 ENV DEBIAN_FRONTEND="noninteractive"
 
 # Install binary dependencies
