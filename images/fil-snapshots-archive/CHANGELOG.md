@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.5](https://github.com/ChainSafe/infra-docker/compare/fil-snapshots-archive-v0.0.4...fil-snapshots-archive-v0.0.5) (2025-08-25)
+
+
+### Features
+
+* Forest version argument ([4163e54](https://github.com/ChainSafe/infra-docker/commit/4163e54e1a453860b0504b68c5fc6e9cd03c8532))
+
 ## [0.0.4](https://github.com/ChainSafe/infra-docker/compare/fil-snapshots-archive-v0.0.3...fil-snapshots-archive-v0.0.4) (2025-08-25)
 
 
