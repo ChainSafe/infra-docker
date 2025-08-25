@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.4](https://github.com/ChainSafe/infra-docker/compare/fil-snapshots-archive-v0.0.3...fil-snapshots-archive-v0.0.4) (2025-08-25)
+
+
+### Bug Fixes
+
+* repository name for deployment ([4e43030](https://github.com/ChainSafe/infra-docker/commit/4e430301c776408e327c71bc7151d80ca1219d78))
+
 ## [0.0.3](https://github.com/ChainSafe/infra-docker/compare/fil-snapshots-archive-v0.0.2...fil-snapshots-archive-v0.0.3) (2025-08-25)
 
 
