@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.3](https://github.com/ChainSafe/infra-docker/compare/fil-snapshots-archive-v0.0.2...fil-snapshots-archive-v0.0.3) (2025-08-25)
+
+
+### Bug Fixes
+
+* correct entrypoint for the worker image ([1eb2a44](https://github.com/ChainSafe/infra-docker/commit/1eb2a444b45a7b9c41ff07e632d109b88ff8a843))
+
 ## [0.0.2](https://github.com/ChainSafe/infra-docker/compare/fil-snapshots-archive-v0.0.1...fil-snapshots-archive-v0.0.2) (2025-08-25)
 
 
