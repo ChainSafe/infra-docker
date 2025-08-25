@@ -37,4 +37,4 @@ RUN forest -V \
     && jq -V \
     && python3 -V
 
-ENTRYPOINT ["forest"]
+ENTRYPOINT ["/bin/bash"]
