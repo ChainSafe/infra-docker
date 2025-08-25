@@ -5,6 +5,8 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
+
 
 env:
   APP_ID: 1824587 # chainsafe-infra-releaser
@@ -88,11 +90,11 @@ jobs:
     runs-on: ubuntu-latest
     needs: detect_changes
     if: ${{ fromJson(needs.detect_changes.outputs.matrix).include[0] != null }}
-    # permissions:
-    #   attestations: write
-    #   contents: read
-    #   id-token: write
-    #   packages: write
+    permissions:
+      attestations: write
+      contents: read
+      id-token: write
+      packages: write
     concurrency:
       group: docker
     strategy:
@@ -120,15 +122,11 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-buildx-${{ matrix.service }}-
 
-      - name: Set lowercase repository name
-        run: |
-          echo "REPO_LC=${GITHUB_REPOSITORY,,}" >> $GITHUB_ENV
-
       - name: Extract metadata (tags, labels) for Docker
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ghcr.io/${{ env.REPO_LC }}/${{ matrix.service }}
+          images: ghcr.io/${{ github.repository }}/${{ matrix.service }}
           tags: |
             type=ref,event=branch
             type=sha,prefix=git-
