@@ -1,0 +1,156 @@
+---
+name: Release Images
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  APP_ID: 1824587 # chainsafe-infra-releaser
+
+jobs:
+  prepare_release:
+    permissions:
+      contents: write
+      pull-requests: write
+      issues: write
+    runs-on: ubuntu-latest
+    steps:
+      # PR should not be triggered by repository's token to trigger GHA for auto approval
+      # so, use github apps token instead of repository token
+      # https://docs.github.com/en/actions/security-guides/automatic-token-authentication#using-the-github_token-in-a-workflow
+      - id: app-token
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ env.APP_ID }}
+          private-key: ${{ secrets.RELEASE_APP_PRIVATE_KEY }}
+      - id: release
+        uses: googleapis/release-please-action@v4
+        with:
+          token: ${{ steps.app-token.outputs.token }}
+    outputs:
+      releases_created: ${{ steps.release.outputs.releases_created }}
+
+  detect_changes:
+    name: Detect Changed Services
+    needs: prepare_release
+    if: ${{ needs.prepare_release.outputs.releases_created == 'true' }}
+    permissions:
+      contents: read
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository Code
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+      - name: Determine Changed Services
+        id: get_matrix
+        shell: bash
+        run: |
+          cd $GITHUB_WORKSPACE
+          echo "Detecting changes..."
+          CHANGED_FOLDERS=$(
+            git diff --name-only ${{ github.event.before }} ${{ github.sha }} images | \
+              awk -F/ '!($2 ~ /^(Dockerfile|Makefile)$/) {print $2}' | \
+              sort -u | xargs
+          )
+          echo "Changed folders: $CHANGED_FOLDERS"
+
+          matrix="{\"include\": ["
+          first=1
+          for service in $CHANGED_FOLDERS; do
+           if [ -f "images/${service}/Dockerfile" ]; then
+             if [ $first -eq 0 ]; then
+               matrix+=","
+             fi
+             matrix+="{\"service\": \"${service}\"}"
+             first=0
+           fi
+          done
+          matrix+="]}"
+
+          echo "Matrix for build job: $matrix"
+          echo "matrix=$matrix" >> $GITHUB_OUTPUT
+
+      - name: Validate Matrix
+        if: ${{ fromJson(steps.get_matrix.outputs.matrix).include[0] == null }}
+        run: |
+          echo "Output from previous step:"
+          echo "${{ fromJson(steps.get_matrix.outputs.matrix).include.length }}"
+          echo "${{ steps.get_matrix.outputs.matrix }}"
+          echo "No services with a Dockerfile were changed. Exiting gracefully."
+          exit 0
+    outputs:
+      matrix: ${{ steps.get_matrix.outputs.matrix }}
+
+  build-and-push-images:
+    runs-on: ubuntu-latest
+    needs: detect_changes
+    if: ${{ fromJson(needs.detect_changes.outputs.matrix).include[0] != null }}
+    permissions:
+      attestations: write
+      contents: read
+      id-token: write
+      packages: write
+    concurrency:
+      group: docker
+    strategy:
+      matrix: ${{ fromJson(needs.detect_changes.outputs.matrix) }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to the Container registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: 'Cache Docker layers'
+        uses: actions/cache@v4
+        with:
+          path: /tmp/.buildx-cache
+          key: ${{ runner.os }}-buildx-${{ matrix.service }}-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-buildx-${{ matrix.service }}-
+
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ghcr.io/${{ github.repository }}/${{ matrix.service }}
+          tags: |
+            type=ref,event=branch
+            type=sha,prefix=git-
+            type=semver,pattern={{version}}
+
+      - name: Build and push Docker image
+        id: push
+        uses: docker/build-push-action@v6
+        with:
+          context: ./images/${{ matrix.service }}
+          file: ./images/${{ matrix.service }}/Dockerfile
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=local,src=/tmp/.buildx-cache
+          cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
+
+      - name: Generate artifact attestation
+        uses: actions/attest-build-provenance@v1
+        with:
+          subject-name: ghcr.io/${{ github.repository }}/${{ matrix.service }}
+          subject-digest: ${{ steps.push.outputs.digest }}
+          push-to-registry: true
+
+      # Move new cache into place for next run
+      - name: Move cache
+        run: |
+          rm -rf /tmp/.buildx-cache
+          mv /tmp/.buildx-cache-new /tmp/.buildx-cache
