@@ -88,11 +88,11 @@ jobs:
     runs-on: ubuntu-latest
     needs: detect_changes
     if: ${{ fromJson(needs.detect_changes.outputs.matrix).include[0] != null }}
-    permissions:
-      attestations: write
-      contents: read
-      id-token: write
-      packages: write
+    # permissions:
+    #   attestations: write
+    #   contents: read
+    #   id-token: write
+    #   packages: write
     concurrency:
       group: docker
     strategy:
