@@ -4,7 +4,7 @@ This repository contains Dockerfiles for ChainSafe Infrastructure services.
 
 ## Available Images
 
-### `fil-snapshots-archive`
+### [`fil-snapshots-archive`](./images/fil-snapshots-archive)
 
 Docker image for storing FIL snapshots.
 

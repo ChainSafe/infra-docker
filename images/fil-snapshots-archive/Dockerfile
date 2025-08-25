@@ -1,5 +1,3 @@
-ARG FOREST_VERSION=main
-
 FROM ghcr.io/chainsafe/forest:latest-fat
 ENV DEBIAN_FRONTEND="noninteractive"
 
