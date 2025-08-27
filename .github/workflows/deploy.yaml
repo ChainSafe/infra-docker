@@ -55,9 +55,7 @@ jobs:
         with:
           images: ghcr.io/${{ github.repository }}/${{ env.IMAGE_NAME }}
           tags: |
-            type=ref,event=branch
-            type=sha,prefix=git-,event=tag
-            type=ref,match=${{ env.IMAGE_VERSION }},event=tag
+            type=raw,value=${{ env.IMAGE_VERSION }}
 
       - name: Build and push Docker image
         id: push
