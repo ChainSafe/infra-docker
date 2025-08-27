@@ -1,4 +1,4 @@
-ARG FOREST_VERSION=latest-fat
+ARG FOREST_VERSION=v0.29.0-fat
 
 FROM ghcr.io/chainsafe/forest:${FOREST_VERSION}
 ENV DEBIAN_FRONTEND="noninteractive"
@@ -15,9 +15,11 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 
 # Install awscli
+WORKDIR /opt
 RUN \
   curl -sL "https://awscli.amazonaws.com/awscli-exe-linux-$(uname -m).zip" -o "awscliv2.zip" \
   && unzip -qq awscliv2.zip \
+  && rm -f awscliv2.zip \
   && ./aws/install --bin-dir /usr/local/bin --install-dir /usr/local/aws-cli --update > /dev/null \
   && rm -rf \
     /usr/local/aws-cli/v2/current/dist/aws_completer \
