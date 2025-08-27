@@ -11,7 +11,7 @@ RUN apt-get update \
       jq \
       python3 \
       python3-pip \
-      unzip  \
+      unzip \
       wget  \
     && rm -rf /var/lib/apt/lists/*
 
