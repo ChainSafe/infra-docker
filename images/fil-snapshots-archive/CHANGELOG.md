@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.2](https://github.com/ChainSafe/infra-docker/compare/fil-snapshots-archive-v0.1.1...fil-snapshots-archive-v0.1.2) (2025-08-27)
+
+
+### Bug Fixes
+
+* Fix deploy image version ([43a31d9](https://github.com/ChainSafe/infra-docker/commit/43a31d92569f3df0fc536d4de04531398f91eac0))
+
 ## [0.1.1](https://github.com/ChainSafe/infra-docker/compare/fil-snapshots-archive-v0.1.0...fil-snapshots-archive-v0.1.1) (2025-08-27)
 
 
