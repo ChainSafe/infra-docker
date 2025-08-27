@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.1](https://github.com/ChainSafe/infra-docker/compare/fil-snapshots-archive-v0.1.0...fil-snapshots-archive-v0.1.1) (2025-08-27)
+
+
+### Bug Fixes
+
+* Add wget to final image ([98cc97f](https://github.com/ChainSafe/infra-docker/commit/98cc97fe276bfb48c7cde1160cc5b89f74019f7b))
+
 ## [0.1.0](https://github.com/ChainSafe/infra-docker/compare/fil-snapshots-archive-v0.0.5...fil-snapshots-archive-v0.1.0) (2025-08-27)
 
 
