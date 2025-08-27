@@ -12,6 +12,7 @@ RUN apt-get update \
       python3 \
       python3-pip \
       unzip  \
+      wget  \
     && rm -rf /var/lib/apt/lists/*
 
 # Install awscli
