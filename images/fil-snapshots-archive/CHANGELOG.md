@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.3](https://github.com/ChainSafe/infra-docker/compare/fil-snapshots-archive-v0.1.2...fil-snapshots-archive-v0.1.3) (2025-09-01)
+
+
+### Bug Fixes
+
+* Test epoch calculation ([66b47f0](https://github.com/ChainSafe/infra-docker/commit/66b47f0304d3a16a498f8b370568190dbaa47ea8))
+
 ## [0.1.2](https://github.com/ChainSafe/infra-docker/compare/fil-snapshots-archive-v0.1.1...fil-snapshots-archive-v0.1.2) (2025-08-27)
 
 
