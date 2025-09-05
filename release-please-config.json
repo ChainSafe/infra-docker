@@ -3,6 +3,10 @@
     "images/fil-snapshots-archive": {
       "component": "fil-snapshots-archive",
       "package-name": "fil-snapshots-archive"
+    },
+    "images/ara": {
+      "component": "ara",
+      "package-name": "ara"
     }
   },
   "release-type": "simple",
