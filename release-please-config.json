@@ -7,6 +7,10 @@
     "images/ara": {
       "component": "ara",
       "package-name": "ara"
+    },
+    "images/ee-awx": {
+      "component": "ee-awx",
+      "package-name": "ee-awx"
     }
   },
   "release-type": "simple",
