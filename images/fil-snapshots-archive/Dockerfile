@@ -78,21 +78,23 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 
 # Install awscli
-WORKDIR /opt
-RUN \
-  curl -sL "https://awscli.amazonaws.com/awscli-exe-linux-$(uname -m).zip" -o "awscliv2.zip" \
-  && unzip -qq awscliv2.zip \
-  && rm -f awscliv2.zip \
-  && ./aws/install --bin-dir /usr/local/bin --install-dir /usr/local/aws-cli --update > /dev/null \
-  && rm -rf \
-    /usr/local/aws-cli/v2/current/dist/aws_completer \
-    /usr/local/aws-cli/v2/current/dist/awscli/data/ac.index \
-    /usr/local/aws-cli/v2/current/dist/awscli/examples \
-  && find /usr/local/aws-cli/v2/current/dist/awscli/data -name 'completions-1*.json' -delete \
-  && find /usr/local/aws-cli/v2/current/dist/awscli/botocore/data -name examples-1.json -delete
+#WORKDIR /opt
+#RUN \
+#  curl -sL "https://awscli.amazonaws.com/awscli-exe-linux-$(uname -m).zip" -o "awscliv2.zip" \
+#  && unzip -qq awscliv2.zip \
+#  && rm -f awscliv2.zip \
+#  && ./aws/install --bin-dir /usr/local/bin --install-dir /usr/local/aws-cli --update > /dev/null \
+#  && rm -rf \
+#    /usr/local/aws-cli/v2/current/dist/aws_completer \
+#    /usr/local/aws-cli/v2/current/dist/awscli/data/ac.index \
+#    /usr/local/aws-cli/v2/current/dist/awscli/examples \
+#  && find /usr/local/aws-cli/v2/current/dist/awscli/data -name 'completions-1*.json' -delete \
+#  && find /usr/local/aws-cli/v2/current/dist/awscli/botocore/data -name examples-1.json -delete
 
-# Install Pika
-RUN pip3 install pika --break-system-packages
+# Install Python dependencies
+COPY requirements.txt .
+RUN pip3 install --no-cache-dir --break-system-packages -r requirements.txt \
+    && rm -f requirements.txt
 
 # Basic verification of dynamically linked dependencies
 RUN forest -V \
