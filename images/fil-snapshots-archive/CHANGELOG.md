@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.0](https://github.com/ChainSafe/infra-docker/compare/fil-snapshots-archive-v0.1.3...fil-snapshots-archive-v0.2.0) (2025-09-06)
+
+
+### Features
+
+* Switch to python implementation ([2e75b24](https://github.com/ChainSafe/infra-docker/commit/2e75b243b37febfcf0e84f455009cf9bc2983bbe))
+
 ## [0.1.3](https://github.com/ChainSafe/infra-docker/compare/fil-snapshots-archive-v0.1.2...fil-snapshots-archive-v0.1.3) (2025-09-01)
 
 
