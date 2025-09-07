@@ -57,9 +57,9 @@ jobs:
           flavor: |
             latest=auto
           tags: |
-            type=semver,pattern={{version}},value=${{ github.ref_name }},match=v(\d.\d.\d)$
-            type=semver,pattern={{major}}.{{minor}},value=${{ github.ref_name }},match=v(\d.\d.\d)$
-            type=semver,pattern={{major}},value=${{ github.ref_name }},match=v(\d.\d.\d)$
+            type=semver,pattern=v{{version}},value=${{ github.ref_name }},match=v(\d.\d.\d)$
+            type=semver,pattern=v{{major}}.{{minor}},value=${{ github.ref_name }},match=v(\d.\d.\d)$
+            type=semver,pattern=v{{major}},value=${{ github.ref_name }},match=v(\d.\d.\d)$
 
       - name: Build and push Docker image
         id: push
