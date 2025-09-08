@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.3](https://github.com/ChainSafe/infra-docker/compare/fil-snapshots-archive-v0.2.2...fil-snapshots-archive-v0.2.3) (2025-09-08)
+
+
+### Bug Fixes
+
+* Update FOREST_VERSION to v0.30.0-fat for image build ([944eb79](https://github.com/ChainSafe/infra-docker/commit/944eb799d18be61147dfab95e24c494cf9d92d45))
+
 ## [0.2.2](https://github.com/ChainSafe/infra-docker/compare/fil-snapshots-archive-v0.2.1...fil-snapshots-archive-v0.2.2) (2025-09-07)
 
 
