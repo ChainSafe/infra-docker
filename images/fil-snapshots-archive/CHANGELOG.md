@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.4](https://github.com/ChainSafe/infra-docker/compare/fil-snapshots-archive-v0.2.3...fil-snapshots-archive-v0.2.4) (2025-09-12)
+
+
+### Bug Fixes
+
+* switch to make image to validate new forest diff logic ([1aa1ab4](https://github.com/ChainSafe/infra-docker/commit/1aa1ab4e81d901d80a92e5171b5c9b61d674c490))
+
 ## [0.2.3](https://github.com/ChainSafe/infra-docker/compare/fil-snapshots-archive-v0.2.2...fil-snapshots-archive-v0.2.3) (2025-09-08)
 
 
