@@ -65,7 +65,7 @@ jobs:
         id: push
         uses: docker/build-push-action@v6
         with:
-          platforms: linux/amd64,linux/arm64
+          # platforms: linux/amd64,linux/arm64
           context: ./images/${{ env.IMAGE_NAME }}
           file: ./images/${{ env.IMAGE_NAME }}/Dockerfile
           push: true
