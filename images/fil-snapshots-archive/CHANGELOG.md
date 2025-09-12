@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.5](https://github.com/ChainSafe/infra-docker/compare/fil-snapshots-archive-v0.2.4...fil-snapshots-archive-v0.2.5) (2025-09-12)
+
+
+### Bug Fixes
+
+* disable arm64 images ([813fc27](https://github.com/ChainSafe/infra-docker/commit/813fc27bb4bcaed9dc02d58926c678e21dd4bc80))
+
 ## [0.2.4](https://github.com/ChainSafe/infra-docker/compare/fil-snapshots-archive-v0.2.3...fil-snapshots-archive-v0.2.4) (2025-09-12)
 
 
