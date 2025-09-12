@@ -45,7 +45,10 @@ RUN update-ca-certificates
 COPY --from=build-env /forest_out/* /usr/local/bin/
 
 # Basic verification of dynamically linked dependencies
-RUN forest -V && forest-cli -V && forest-tool -V && forest-wallet -V
+RUN forest -V \
+    && forest-cli -V \
+    && forest-tool -V \
+    && forest-wallet -V
 
 ENTRYPOINT ["forest"]
 
