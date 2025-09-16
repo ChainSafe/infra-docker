@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.6](https://github.com/ChainSafe/infra-docker/compare/fil-snapshots-archive-v0.2.5...fil-snapshots-archive-v0.2.6) (2025-09-16)
+
+
+### Bug Fixes
+
+* add forest user to Dockerfile for improved permissions handling ([ed3e494](https://github.com/ChainSafe/infra-docker/commit/ed3e4942eab45188082e0f0d0758a30311776a37))
+
 ## [0.2.5](https://github.com/ChainSafe/infra-docker/compare/fil-snapshots-archive-v0.2.4...fil-snapshots-archive-v0.2.5) (2025-09-12)
 
 
