@@ -7,7 +7,7 @@ RUN apt-get update \
         build-essential  \
         clang-14  \
         curl  \
-        git  \
+        git \
         ca-certificates \
     && update-ca-certificates
 ENV CC=clang-14 CXX=clang++-14
@@ -93,6 +93,10 @@ RUN forest -V \
     && forest-cli -V \
     && forest-tool -V \
     && jq -V \
-    && python3 -V
+    && python3 -V \
 
+RUN groupadd --gid 1001 forest \
+  && useradd --uid 1001 --gid 1001 --create-home --shell /bin/bash forest
+
+USER forest
 ENTRYPOINT ["/bin/bash"]

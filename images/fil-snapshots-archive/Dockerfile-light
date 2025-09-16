@@ -26,4 +26,8 @@ RUN forest -V \
     && jq -V \
     && python3 -V
 
+RUN groupadd --gid 1001 forest \
+  && useradd --uid 1001 --gid 1001 --create-home --shell /bin/bash forest
+
+USER forest
 ENTRYPOINT ["/bin/bash"]
