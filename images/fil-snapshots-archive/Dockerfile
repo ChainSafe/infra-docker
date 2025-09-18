@@ -1,1 +1,1 @@
-./Dockerfile-make
+./Dockerfile-light
