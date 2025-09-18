@@ -1,4 +1,5 @@
 boto3
+docker
 pika
 prometheus-client
 slack_sdk
