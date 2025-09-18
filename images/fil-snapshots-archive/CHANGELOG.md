@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.8](https://github.com/ChainSafe/infra-docker/compare/fil-snapshots-archive-v0.2.7...fil-snapshots-archive-v0.2.8) (2025-09-18)
+
+
+### Bug Fixes
+
+* **fil-snapshots-archive:** add aria2 and docker as dependencies in Dockerfiles and requirements.txt ([c6695b9](https://github.com/ChainSafe/infra-docker/commit/c6695b9e97d6df87bb580401fe5626bfe9889946))
+
 ## [0.2.7](https://github.com/ChainSafe/infra-docker/compare/fil-snapshots-archive-v0.2.6...fil-snapshots-archive-v0.2.7) (2025-09-18)
 
 
