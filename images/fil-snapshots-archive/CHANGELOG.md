@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.7](https://github.com/ChainSafe/infra-docker/compare/fil-snapshots-archive-v0.2.6...fil-snapshots-archive-v0.2.7) (2025-09-18)
+
+
+### Bug Fixes
+
+* update Dockerfiles to FOREST_VERSION v0.30.1-fat and refactor dependencies installation ([b2ec5ee](https://github.com/ChainSafe/infra-docker/commit/b2ec5eeb46b67e24b0532f90d7ace652ceb8fabf))
+
 ## [0.2.6](https://github.com/ChainSafe/infra-docker/compare/fil-snapshots-archive-v0.2.5...fil-snapshots-archive-v0.2.6) (2025-09-16)
 
 
