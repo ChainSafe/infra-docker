@@ -1,4 +1,5 @@
-ARG FOREST_VERSION=v0.30.1-fat
+#  v0.30.1-fat
+ARG FOREST_VERSION=edge-fat
 FROM ghcr.io/chainsafe/forest:${FOREST_VERSION}
 ENV DEBIAN_FRONTEND="noninteractive"
 
