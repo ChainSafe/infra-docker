@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.1](https://github.com/ChainSafe/infra-docker/compare/fil-snapshots-archive-v0.3.0...fil-snapshots-archive-v0.3.1) (2025-09-19)
+
+
+### Bug Fixes
+
+* Switch to the edge image ([2265a82](https://github.com/ChainSafe/infra-docker/commit/2265a82e021de8a7eedd1277ee9df5c974dc7624))
+
 ## [0.3.0](https://github.com/ChainSafe/infra-docker/compare/fil-snapshots-archive-v0.2.8...fil-snapshots-archive-v0.3.0) (2025-09-19)
 
 
