@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.0](https://github.com/ChainSafe/infra-docker/compare/fil-snapshots-archive-v0.2.8...fil-snapshots-archive-v0.3.0) (2025-09-19)
+
+
+### Features
+
+* Support snapshot serialization ([3974a30](https://github.com/ChainSafe/infra-docker/commit/3974a306da7c47643d24e4c0ff253b6a1ca9bbce))
+
 ## [0.2.8](https://github.com/ChainSafe/infra-docker/compare/fil-snapshots-archive-v0.2.7...fil-snapshots-archive-v0.2.8) (2025-09-18)
 
 
