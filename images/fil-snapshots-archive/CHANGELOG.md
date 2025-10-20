@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.4](https://github.com/ChainSafe/infra-docker/compare/fil-snapshots-archive-v0.3.3...fil-snapshots-archive-v0.3.4) (2025-10-20)
+
+
+### Bug Fixes
+
+* approach retry to chain exchange in ForestStateCompute ([9948300](https://github.com/ChainSafe/infra-docker/commit/9948300f0224dc5d63a8cd00b8ea797122ec1ff3))
+
 ## [0.3.3](https://github.com/ChainSafe/infra-docker/compare/fil-snapshots-archive-v0.3.2...fil-snapshots-archive-v0.3.3) (2025-10-20)
 
 
